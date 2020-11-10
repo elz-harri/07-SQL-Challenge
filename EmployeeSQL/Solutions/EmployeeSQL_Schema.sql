@@ -1,45 +1,45 @@
 --create tables 
 CREATE TABLE departments (
-    dept_no varchar(30) NOT NULL,
-    dept_name varchar(30) NOT NULL,
-	Primary Key (dept_no)
+    dept_no VARCHAR (30) NOT NULL,
+    dept_name VARCHAR(30) NOT NULL,
+	PRIMARY KEY (dept_no)
 	);
 
 CREATE TABLE dept_emp (
-    emp_no int NOT NULL,
-    dept_no varchar(30) NOT NULL,
-	Foreign Key (dept_no) References departments (dept_no)
+    emp_no INT NOT NULL,
+    dept_no VARCHAR(30) NOT NULL,
+	FOREIGN KEY (dept_no) REFERENCES departments (dept_no)
 );
 
 CREATE TABLE dept_manager (
-    dept_no varchar(30) NOT NULL,
-    emp_no int NOT NULL,
-	Primary Key (emp_no),
-    Foreign	Key (dept_no) References departments (dept_no)
+    dept_no VARCHAR(30) NOT NULL,
+    emp_no INT NOT NULL,
+	PRIMARY KEY (emp_no),
+    FOREIGN KEY (dept_no) REFERENCES departments (dept_no)
 );
 
 CREATE TABLE employees (
-    emp_no int   NOT NULL,
-    emp_title_id varchar(30) NOT NULL,
-    birth_date date NOT NULL,
-    first_name varchar(30) NOT NULL,
-    last_name varchar(30) NOT NULL,
-    sex varchar(30) NOT NULL,
-    hire_date date NOT NULL,
+    emp_no INT   NOT NULL,
+    emp_title_id VARCHAR (30) NOT NULL,
+    birth_date DATE NOT NULL,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    sex VARCHAR(30) NOT NULL,
+    hire_date DATE NOT NULL,
     PRIMARY KEY (emp_no),
-	Foreign key (emp_title_id) references titles (title_id)
+	FOREIGN KEY (emp_title_id) REFERENCES titles (title_id)
 );
 
 CREATE TABLE salaries (
-    emp_no int NOT NULL,
-    salary int NOT NULL,
-    Foreign Key (emp_no) references employees (emp_no)
+    emp_no INT NOT NULL,
+    salary INT NOT NULL,
+    FOREIGN KEY (emp_no) REFERENCES employees (emp_no)
 );
 
 CREATE TABLE titles (
-    title_id varchar(30)   NOT NULL,
-    title varchar(30)   NOT NULL,
-	primary key (title_id)
+    title_id VARCHAR(30) NOT NULL,
+    title VARCHAR(30) NOT NULL,
+	PRIMARY KEY (title_id)
 );	
 
 --add constraints
@@ -59,8 +59,8 @@ ALTER TABLE employees ADD CONSTRAINT fk_employees_emp_title_id FOREIGN KEY(emp_t
 REFERENCES titles (title_id);
 
 -- verify data was imported into tables
-Select * From departments
-Select * From dept_emp
-select * From employees
-Select * From salaries
-Select * From titles
+SELECT * FROM departments
+SELECT * FROM dept_emp
+SELECT * FROM employees
+SELECT * FROM salaries
+SELECT * FROM titles
